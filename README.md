@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Fine-Tuning Small Language Models for Text Classification
 
 A comprehensive project for fine-tuning DistilBERT with LoRA on the AG News dataset, featuring extensive experiments on hyperparameter optimization, data-centric AI, and generalization analysis.
@@ -56,7 +55,7 @@ This project implements a complete pipeline for fine-tuning language models with
 - Visualization of performance landscapes
 
 ### 3. **Data-Centric Experiments**
-- **Active Learning**: Random-based / Uncertainty-based sampling (size: [100, 500, 1000])
+- **Active Learning**: Random-based / Uncertainty-based sampling
 - **Data Augmentation**: 
   - Synonym replacement (WordNet integration)
   - Random insertion/deletion/swap
@@ -64,8 +63,8 @@ This project implements a complete pipeline for fine-tuning language models with
 
 ### 4. **Generalization Analysis**
 - Zero-shot evaluation
-- Few-shot learning (1/5/10/50/100 shots)
-- Data scaling analysis (200/500/1000/2000/5000/20000 sample size)
+- Few-shot learning
+- Data scaling analysis
 
 ### 5. **Multi-Seed Experiments**
 - Reproducibility verification
@@ -92,8 +91,8 @@ This project implements a complete pipeline for fine-tuning language models with
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd proj
+git clone [<repository-url>](https://github.com/jzhao630)
+cd 2025-Fall-Term-AIAA3102-Python-Programming-for-AI-Project
 ```
 
 ### Step 2: Create Virtual Environment (Recommended)
@@ -185,13 +184,15 @@ proj/
 │   ├── data_centric.py              # Data-centric experiments
 │   └── generalization.py            # Generalization analysis
 │
-├── results/                     # Experiment results (auto-generated)
+├── results/                     # Experiment results
 │   ├── baseline_model_seed_42/
+│   ├── baseline_seed_42/
 │   ├── lora_seed_42/
+│   ├── lora_seed_456/
+│   ├── lora_seed_101112/       # Multi-seeds experiments
 │   ├── *.csv                   # Experiment data
 │   └── *.png                   # Visualizations
 │
-└── logs/                        # Training logs (auto-generated)
 ```
 
 ## 🔬 Experiments
@@ -206,7 +207,6 @@ python main.py --mode train
 
 **Output**:
 - Model checkpoints
-- Training history plots
 - Test performance metrics
 - Confusion matrix
 - Classification report
@@ -258,15 +258,18 @@ python main.py --mode data_centric
 ```
 
 **Experiments**:
-- **Active Learning**: Compare random vs. uncertainty sampling
 - **Data Augmentation**: Test augmentation ratios (0% to 100%)
-- **Few-Shot Learning**: Train with 1-100 samples per class
+- **Active Learning**: Compare random vs. uncertainty sampling (size: [100, 500, 1000])
+
 
 **Techniques**:
-- Uncertainty-based sampling
-- Synonym replacement (WordNet)
-- Random text transformations
-- Back-translation (placeholder)
+- **Data Augmentation**: 
+  - Synonym replacement (WordNet integration)
+  - Random insertion/deletion/swap
+  - Back-translation support
+- **Active Learning**: Random-based / Uncertainty-based sampling
+
+
 
 ### 5. Generalization Analysis
 
@@ -278,8 +281,8 @@ python main.py --mode generalization
 
 **Experiments**:
 - **Zero-Shot**: Pre-trained model evaluation
-- **Few-Shot**: 1/2/5/10/20/50/100 shots per class
-- **Data Scaling**: 10 to 10,000 training samples
+- **Few-Shot**: 1/5/10/50/100 shots per class
+- **Data Scaling**: 200/500/1000/2000/5000/20000 training samples
 
 **Analysis**:
 - Learning curves (power law fitting)
@@ -327,22 +330,22 @@ python main.py --mode clean_test
 
 ## 📊 Results
 
-### Typical Performance
+### Model Performance
 
-| Model | Accuracy | F1 Score | Training Time | Trainable Params |
-|-------|----------|----------|---------------|------------------|
-| Baseline DistilBERT | ~0.92 | ~0.92 | ~15 min | 66M (100%) |
-| LoRA DistilBERT | ~0.91 | ~0.91 | ~8 min | 1M (1.5%) |
+| Model | Accuracy | F1 Score | Trainable Params |
+|-------|----------|----------|------------------|
+| Baseline DistilBERT | ~0.86 | ~0.86 | 66M (100%) |
+| LoRA DistilBERT | ~0.89 | ~0.89 | 1M (1.5%) |
 
 ### Key Findings
 
-1. **LoRA Efficiency**: Achieves 99% of baseline performance with only 1.5% trainable parameters
+1. **LoRA Efficiency**: Achieves 103% of baseline performance with only 1.5% trainable parameters
 2. **Optimal Hyperparameters**: 
    - Learning Rate: 5e-4
    - Weight Decay: 0.01
-3. **Data Scaling**: Performance plateaus around 2000-5000 samples
-4. **Few-Shot**: 50 shots per class achieves ~85% of full dataset performance
-5. **Data Augmentation**: 50% augmentation provides optimal improvement
+3. **Data Scaling**: Performance plateaus around 5000-10000 samples
+4. **Few-Shot**: 50 shots per class achieves ~86% of full dataset performance
+5. **Data Augmentation**: 25% augmentation provides optimal improvement
 
 ### Output Files
 
@@ -352,7 +355,6 @@ All results are saved in the `results/` directory:
 - **PNG Files**: All visualizations
 - **Model Checkpoints**: Saved models (`.pt`, `.safetensors`)
 - **Config Files**: Training configurations
-- **Log Files**: Detailed training logs (in `logs/`)
 
 ## ⚙️ Configuration
 
@@ -490,35 +492,6 @@ trainer = Trainer(
 )
 ```
 
-## 📝 Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@misc{pp4ai_lora_finetuning,
-  title={Fine-Tuning Small Language Models with LoRA},
-  author={Your Name},
-  year={2024},
-  publisher={GitHub},
-  howpublished={\\url{https://github.com/your-repo}}
-}
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📧 Contact
-
-For questions or issues:
-- Open an issue on GitHub
-- Email: your.email@example.com
 
 ## 🙏 Acknowledgments
 
@@ -528,25 +501,6 @@ For questions or issues:
 - [DistilBERT](https://arxiv.org/abs/1910.01108)
 - [LoRA Paper](https://arxiv.org/abs/2106.09685)
 
-## 📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🎓 Educational Purpose
-
-This project is part of a Python Programming for AI course and serves as a comprehensive example of:
-- Modern NLP practices
-- Parameter-efficient fine-tuning
-- Experiment design and analysis
-- Scientific computing with Python
-- Machine learning best practices
-
 ---
 
 **Happy Fine-Tuning! 🚀**
-
-For more information, see the [documentation](docs/) or open an issue.
-=======
-# 2025Fall-Term-AIAA3102-Python-Programming-for-AI-Project
->>>>>>> d29524b2495228a900b7f0cb5aa8f192ef753499
-"# 2025-Fall-Term-AIAA3102-Python-Programming-for-AI-Project" 
