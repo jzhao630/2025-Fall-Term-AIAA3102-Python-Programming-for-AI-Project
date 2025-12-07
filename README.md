@@ -42,6 +42,12 @@ This project implements a complete pipeline for fine-tuning language models with
 
 ## ✨ Features
 
+### 0. **Notice: Size Settings** 
+For time efficiency, we implemented those experiments without changes in sample size with a fixed size settings as the following:
+- Train set: 2400
+- Validation set: 240
+- Test set: about 7600 (the original test set loaded)
+
 ### 1. **Model Training**
 - Baseline DistilBERT training
 - LoRA-based parameter-efficient fine-tuning
@@ -504,3 +510,4 @@ trainer = Trainer(
 ---
 
 **Happy Fine-Tuning! 🚀**
+
