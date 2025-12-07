@@ -2,19 +2,24 @@
 
 A comprehensive project for fine-tuning DistilBERT with LoRA on the AG News dataset, featuring extensive experiments on hyperparameter optimization, data-centric AI, and generalization analysis.
 
+
 ## 📋 Table of Contents
 
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [Experiments](#experiments)
-- [Usage Examples](#usage-examples)
-- [Results](#results)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
+- [Project Overview](#-project-overview)
+- [Features](#-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Project Structure](#-project-structure)
+- [Experiments](#-experiments)
+- [Usage Examples](#-usage-examples)
+- [Results](#-results)
+- [Configuration](#-configuration)
+- [Troubleshooting](#-troubleshooting)
+- [Performance Optimization Tips](#-performance-optimization-tips)
+- [Advanced Features](#-advanced-features)
+- [Acknowledgement](#-acknowledgments)
+- [Group Members](#-group-members)
+- [Team Contribution](#-team-contribution)
 
 ## 🎯 Project Overview
 
@@ -46,7 +51,7 @@ This project implements a complete pipeline for fine-tuning language models with
 For time efficiency, we implemented those experiments without changes in sample size with a fixed size settings as the following:
 - Train set: 2400
 - Validation set: 240
-- Test set: about 7600 (the original test set loaded)
+- Test set: approximately 7600 (the original test set loaded)
 
 ### 1. **Model Training**
 - Baseline DistilBERT training
@@ -288,7 +293,7 @@ python main.py --mode generalization
 **Experiments**:
 - **Zero-Shot**: Pre-trained model evaluation
 - **Few-Shot**: 1/5/10/50/100 shots per class
-- **Data Scaling**: 200/500/1000/2000/5000/20000 training samples
+- **Data Scaling**: 200/500/1000/2000/5000 training samples
 
 **Analysis**:
 - Learning curves (power law fitting)
@@ -498,7 +503,6 @@ trainer = Trainer(
 )
 ```
 
-
 ## 🙏 Acknowledgments
 
 - [HuggingFace Transformers](https://huggingface.co/docs/transformers/)
@@ -507,7 +511,16 @@ trainer = Trainer(
 - [DistilBERT](https://arxiv.org/abs/1910.01108)
 - [LoRA Paper](https://arxiv.org/abs/2106.09685)
 
+## 👨 Group Members
+- Jia ZHENG, 50012508
+- Juncheng ZHAO, 50013318
+- Hanting WANG, 50013083
+
+## 👥 Team Contribution
+- Jia ZHENG: Build a basic code framework and write an overall README.md file
+- Juncheng ZHAO: Perfect the code work, conduct experiments and record the results
+- Hanting WANG: Collect and analyze the results, make presentation slides and write a final project report
+
 ---
 
 **Happy Fine-Tuning! 🚀**
-
